@@ -92,6 +92,13 @@ public class GithubActivity2Application {
                             .getAsJsonObject()
                             .get("name")
                             .getAsString();
+                    break;
+                case "CreateEvent":
+                    action = "Create " + element.getAsJsonObject()
+                            .get("repo")
+                            .getAsJsonObject()
+                            .get("name")
+                            .getAsString();
             }
             System.out.println(action);
         }
