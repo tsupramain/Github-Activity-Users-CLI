@@ -106,6 +106,14 @@ public class GithubActivity2Application {
                 case "ForkEvent":
                     action = "Forked " + element.getAsJsonObject().get("repo").getAsJsonObject().get("name").getAsString();
                     break;
+                default:
+                    action = element
+                            .getAsJsonObject()
+                            .get("type")
+                            .getAsString().replace("Event", "") + " in " +
+                            element.getAsJsonObject()
+                            .get("repo").
+                            getAsJsonObject().get("name").getAsString();
             }
             System.out.println(action);
         }
