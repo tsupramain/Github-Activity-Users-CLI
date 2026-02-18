@@ -94,11 +94,18 @@ public class GithubActivity2Application {
                             .getAsString();
                     break;
                 case "CreateEvent":
-                    action = "Create " + element.getAsJsonObject()
-                            .get("repo")
-                            .getAsJsonObject()
-                            .get("name")
-                            .getAsString();
+                    action = "Created " + element.getAsJsonObject()
+                            .get("payload")
+                            .getAsJsonObject().get("ref_type").getAsString() + " in " + element.getAsJsonObject()
+                            .get("repo").getAsJsonObject()
+                            .get("name").getAsString();
+                    break;
+                case "WatchEvent":
+                    action = "Starred " + element.getAsJsonObject().get("repo").getAsJsonObject().get("name").getAsString();
+                    break;
+                case "ForkEvent":
+                    action = "Forked " + element.getAsJsonObject().get("repo").getAsJsonObject().get("name").getAsString();
+                    break;
             }
             System.out.println(action);
         }
